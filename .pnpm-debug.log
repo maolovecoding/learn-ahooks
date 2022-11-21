@@ -1,0 +1,1736 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 3,
+    "total": 3,
+    "workspacePrefix": "/Users/maojun/xhs-utils/learn-ahooks"
+  },
+  "1 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "ahooks",
+      "version": "3.7.2",
+      "description": "react hooks library",
+      "keywords": [
+        "ahooks",
+        "umi hooks",
+        "react hooks"
+      ],
+      "main": "./lib/index.js",
+      "module": "./es/index.js",
+      "types": "./lib/index.d.ts",
+      "unpkg": "dist/ahooks.js",
+      "sideEffects": false,
+      "authors": {
+        "name": "brickspert",
+        "email": "brickspert.fjl@alipay.com"
+      },
+      "publishConfig": {
+        "registry": "https://registry.npmjs.org/"
+      },
+      "repository": "https://github.com/alibaba/hooks",
+      "homepage": "https://github.com/alibaba/hooks",
+      "scripts": {
+        "build": "gulp && webpack-cli"
+      },
+      "files": [
+        "dist",
+        "lib",
+        "es",
+        "metadata.json",
+        "package.json",
+        "README.md"
+      ],
+      "dependencies": {
+        "@types/js-cookie": "^2.x.x",
+        "ahooks-v3-count": "^1.0.0",
+        "dayjs": "^1.9.1",
+        "intersection-observer": "^0.12.0",
+        "js-cookie": "^2.x.x",
+        "lodash": "^4.17.21",
+        "resize-observer-polyfill": "^1.5.1",
+        "screenfull": "^5.0.0"
+      },
+      "peerDependencies": {
+        "react": "^16.8.0 || ^17.0.0 || ^18.0.0"
+      },
+      "devDependencies": {
+        "@alifd/next": "^1.20.6",
+        "@ant-design/icons": "^4.6.2",
+        "@types/enzyme": "^3.10.5",
+        "antd": "^4.16.9",
+        "enzyme-adapter-react-16": "^1.15.4",
+        "jest-websocket-mock": "^2.1.0",
+        "mock-socket": "^9.0.3",
+        "mockjs": "^1.1.0",
+        "react-drag-listview": "^0.1.6"
+      },
+      "engines": {
+        "node": ">=8.0.0"
+      },
+      "license": "MIT",
+      "gitHead": "11f6ad571bd365c95ecb9409ca3050cbbfc9b34a"
+    },
+    "prefix": "/Users/maojun/xhs-utils/learn-ahooks/packages/hooks"
+  },
+  "2 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "@ahooksjs/use-url-state",
+      "version": "3.5.0",
+      "description": "A hook that stores the state into url query parameters.",
+      "main": "./lib/index.js",
+      "module": "./es/index.js",
+      "types": "./lib/index.d.ts",
+      "unpkg": "dist/ahooks-use-url-state.js",
+      "files": [
+        "dist",
+        "lib",
+        "es",
+        "package.json"
+      ],
+      "repository": {
+        "type": "git",
+        "url": "git+https://github.com/alibaba/hooks.git"
+      },
+      "scripts": {
+        "build": "gulp && webpack-cli"
+      },
+      "publishConfig": {
+        "registry": "https://registry.npmjs.org/"
+      },
+      "license": "MIT",
+      "bugs": {
+        "url": "https://github.com/alibaba/hooks/issues"
+      },
+      "homepage": "https://github.com/alibaba/hooks",
+      "peerDependencies": {
+        "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
+        "react-router": "^5.0.0 || ^6.0.0"
+      },
+      "dependencies": {
+        "ahooks": "^3.4.1",
+        "query-string": "^6.9.0"
+      },
+      "gitHead": "11f6ad571bd365c95ecb9409ca3050cbbfc9b34a"
+    },
+    "prefix": "/Users/maojun/xhs-utils/learn-ahooks/packages/use-url-state"
+  },
+  "3 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "ahooks",
+      "private": true,
+      "repository": {
+        "type": "git",
+        "url": "git+https://github.com/alibaba/hooks.git"
+      },
+      "scripts": {
+        "init": "pnpm install && pnpm run build",
+        "start": "pnpm run dev",
+        "dev": "dumi dev",
+        "clean-dist": "rimraf 'packages/*/{lib,es,node_modules,dist}'",
+        "clean": "pnpm run clean-dist && rimraf node_modules",
+        "build": "pnpm -r --filter=./packages/* run build",
+        "test": "jest",
+        "coveralls": "jest --coverage --coverageReporters=text-lcov | coveralls",
+        "lint": "eslint --ignore-pattern **/__tests__/* --ignore-pattern **/demo/* \"packages/*/src/**/*.{ts,tsx}\"",
+        "pretty": "pretty-quick --staged",
+        "build:doc": "dumi build",
+        "pub:doc-surge": "surge ./dist --domain ahooks.js.org",
+        "pub:doc-gitee": "cd ./dist && rm -rf .git && touch .spa && touch .nojekyll && git init && git remote add origin git@gitee.com:ahooks/ahooks.git && git add -A && git commit -m \"publish docs\" && git push origin master -f && echo https://gitee.com/ahooks/ahooks/pages",
+        "pub:doc": "pnpm run build:doc && pnpm run pub:doc-surge && pnpm run pub:doc-gitee",
+        "pub": "pnpm run build && pnpm -r --filter=./packages/* publish",
+        "pub:beta": "pnpm run build && pnpm -r --filter=./packages/* publish --tag beta",
+        "preinstall": "npx only-allow pnpm",
+        "prepare": "husky install"
+      },
+      "devDependencies": {
+        "@ant-design/icons": "^4.6.2",
+        "@babel/cli": "^7.10.1",
+        "@babel/core": "^7.10.2",
+        "@babel/plugin-transform-runtime": "^7.19.6",
+        "@commitlint/cli": "^17.1.2",
+        "@commitlint/config-conventional": "^17.1.0",
+        "@testing-library/jest-dom": "^5.16.5",
+        "@testing-library/react": "^13.4.0",
+        "@testing-library/react-hooks": "^8.0.1",
+        "@types/jest": "^27.4.1",
+        "@types/lodash.debounce": "^4.0.6",
+        "@types/lodash.isequal": "^4.5.5",
+        "@types/lodash.throttle": "^4.1.6",
+        "@types/react-router": "^5.1.19",
+        "@umijs/fabric": "^2.1.0",
+        "@umijs/plugin-sass": "^1.1.1",
+        "antd": "^4.3.3",
+        "babel-loader": "^8.1.0",
+        "babel-plugin-import": "^1.12.0",
+        "babel-plugin-transform-async-to-promises": "^0.8.15",
+        "coveralls": "^3.1.1",
+        "del": "^5.1.0",
+        "dumi": "^1.1.48",
+        "enzyme": "^3.10.0",
+        "eslint": "^7.2.0",
+        "eslint-plugin-react-hooks": "^4.0.8",
+        "fast-glob": "^3.2.11",
+        "fs-extra": "^10.0.1",
+        "gray-matter": "^4.0.3",
+        "gulp": "^4.0.2",
+        "gulp-babel": "^8.0.0",
+        "gulp-typescript": "^6.0.0-alpha.1",
+        "husky": "^8.0.0",
+        "jest": "^27.5.1",
+        "jest-fetch-mock": "^3.0.3",
+        "jest-localstorage-mock": "^2.4.18",
+        "mockjs": "^1.1.0",
+        "prettier": "^2.0.5",
+        "pretty-quick": "^3.1.3",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-drag-listview": "^0.1.6",
+        "react-router": "^6.4.2",
+        "react-shadow": "^19.0.3",
+        "react-test-renderer": "^16.13.1",
+        "rimraf": "^3.0.2",
+        "surge": "^0.21.3",
+        "ts-jest": "^27.1.5",
+        "typescript": "^4.8.4",
+        "umi-request": "^1.2.18",
+        "webpack": "^4.43.0",
+        "webpack-cli": "^3.3.10",
+        "webpack-merge": "^4.2.2"
+      },
+      "commitlint": {
+        "extends": [
+          "@commitlint/config-conventional"
+        ]
+      }
+    },
+    "prefix": "/Users/maojun/xhs-utils/learn-ahooks"
+  },
+  "4 warn pnpm:lockfile": {
+    "message": "Your pnpm-lock.yaml was generated by a newer version of pnpm. It is a compatible version but it might get downgraded to version 5.3",
+    "prefix": "/Users/maojun/xhs-utils/learn-ahooks"
+  },
+  "5 debug pnpm:context": {
+    "currentLockfileExists": false,
+    "storeDir": "/Users/maojun/.pnpm-store/v3",
+    "virtualStoreDir": "/Users/maojun/xhs-utils/learn-ahooks/node_modules/.pnpm"
+  },
+  "6 debug pnpm:stage": {
+    "prefix": "/Users/maojun/xhs-utils/learn-ahooks",
+    "stage": "resolution_started"
+  },
+  "7 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/@alifd/next/1.26.3",
+    "wanted": {
+      "dependentId": "packages/hooks",
+      "name": "@alifd/next",
+      "rawSpec": "^1.20.6"
+    }
+  },
+  "8 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/@ant-design/icons/4.7.0",
+    "wanted": {
+      "dependentId": "packages/hooks",
+      "name": "@ant-design/icons",
+      "rawSpec": "^4.6.2"
+    }
+  },
+  "9 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/@types/enzyme/3.10.12",
+    "wanted": {
+      "dependentId": "packages/hooks",
+      "name": "@types/enzyme",
+      "rawSpec": "^3.10.5"
+    }
+  },
+  "10 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/antd/4.23.5",
+    "wanted": {
+      "dependentId": "packages/hooks",
+      "name": "antd",
+      "rawSpec": "^4.16.9"
+    }
+  },
+  "11 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/enzyme-adapter-react-16/1.15.6",
+    "wanted": {
+      "dependentId": "packages/hooks",
+      "name": "enzyme-adapter-react-16",
+      "rawSpec": "^1.15.4"
+    }
+  },
+  "12 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/jest-websocket-mock/2.4.0",
+    "wanted": {
+      "dependentId": "packages/hooks",
+      "name": "jest-websocket-mock",
+      "rawSpec": "^2.1.0"
+    }
+  },
+  "13 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/mock-socket/9.1.5",
+    "wanted": {
+      "dependentId": "packages/hooks",
+      "name": "mock-socket",
+      "rawSpec": "^9.0.3"
+    }
+  },
+  "14 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/mockjs/1.1.0",
+    "wanted": {
+      "dependentId": "packages/hooks",
+      "name": "mockjs",
+      "rawSpec": "^1.1.0"
+    }
+  },
+  "15 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/react-drag-listview/0.1.9",
+    "wanted": {
+      "dependentId": "packages/hooks",
+      "name": "react-drag-listview",
+      "rawSpec": "^0.1.6"
+    }
+  },
+  "16 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/@types/js-cookie/2.2.6",
+    "wanted": {
+      "dependentId": "packages/hooks",
+      "name": "@types/js-cookie",
+      "rawSpec": "^2.x.x"
+    }
+  },
+  "17 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/ahooks-v3-count/1.0.0",
+    "wanted": {
+      "dependentId": "packages/hooks",
+      "name": "ahooks-v3-count",
+      "rawSpec": "^1.0.0"
+    }
+  },
+  "18 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/dayjs/1.11.5",
+    "wanted": {
+      "dependentId": "packages/hooks",
+      "name": "dayjs",
+      "rawSpec": "^1.9.1"
+    }
+  },
+  "19 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/intersection-observer/0.12.2",
+    "wanted": {
+      "dependentId": "packages/hooks",
+      "name": "intersection-observer",
+      "rawSpec": "^0.12.0"
+    }
+  },
+  "20 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/js-cookie/2.2.1",
+    "wanted": {
+      "dependentId": "packages/hooks",
+      "name": "js-cookie",
+      "rawSpec": "^2.x.x"
+    }
+  },
+  "21 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/lodash/4.17.21",
+    "wanted": {
+      "dependentId": "packages/hooks",
+      "name": "lodash",
+      "rawSpec": "^4.17.21"
+    }
+  },
+  "22 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/resize-observer-polyfill/1.5.1",
+    "wanted": {
+      "dependentId": "packages/hooks",
+      "name": "resize-observer-polyfill",
+      "rawSpec": "^1.5.1"
+    }
+  },
+  "23 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/screenfull/5.2.0",
+    "wanted": {
+      "dependentId": "packages/hooks",
+      "name": "screenfull",
+      "rawSpec": "^5.0.0"
+    }
+  },
+  "24 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/query-string/6.14.1",
+    "wanted": {
+      "dependentId": "packages/use-url-state",
+      "name": "query-string",
+      "rawSpec": "^6.9.0"
+    }
+  },
+  "25 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/@ant-design/icons/4.7.0",
+    "wanted": {
+      "dependentId": ".",
+      "name": "@ant-design/icons",
+      "rawSpec": "^4.6.2"
+    }
+  },
+  "26 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/@babel/cli/7.19.3",
+    "wanted": {
+      "dependentId": ".",
+      "name": "@babel/cli",
+      "rawSpec": "^7.10.1"
+    }
+  },
+  "27 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/@babel/core/7.19.3",
+    "wanted": {
+      "dependentId": ".",
+      "name": "@babel/core",
+      "rawSpec": "^7.10.2"
+    }
+  },
+  "28 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/@babel/plugin-transform-runtime/7.19.6",
+    "wanted": {
+      "dependentId": ".",
+      "name": "@babel/plugin-transform-runtime",
+      "rawSpec": "^7.19.6"
+    }
+  },
+  "29 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/@commitlint/cli/17.1.2",
+    "wanted": {
+      "dependentId": ".",
+      "name": "@commitlint/cli",
+      "rawSpec": "^17.1.2"
+    }
+  },
+  "30 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/@commitlint/config-conventional/17.1.0",
+    "wanted": {
+      "dependentId": ".",
+      "name": "@commitlint/config-conventional",
+      "rawSpec": "^17.1.0"
+    }
+  },
+  "31 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/@testing-library/jest-dom/5.16.5",
+    "wanted": {
+      "dependentId": ".",
+      "name": "@testing-library/jest-dom",
+      "rawSpec": "^5.16.5"
+    }
+  },
+  "32 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/@testing-library/react/13.4.0",
+    "wanted": {
+      "dependentId": ".",
+      "name": "@testing-library/react",
+      "rawSpec": "^13.4.0"
+    }
+  },
+  "33 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/@testing-library/react-hooks/8.0.1",
+    "wanted": {
+      "dependentId": ".",
+      "name": "@testing-library/react-hooks",
+      "rawSpec": "^8.0.1"
+    }
+  },
+  "34 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/@types/jest/27.5.2",
+    "wanted": {
+      "dependentId": ".",
+      "name": "@types/jest",
+      "rawSpec": "^27.4.1"
+    }
+  },
+  "35 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/@types/lodash.debounce/4.0.7",
+    "wanted": {
+      "dependentId": ".",
+      "name": "@types/lodash.debounce",
+      "rawSpec": "^4.0.6"
+    }
+  },
+  "36 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/@types/lodash.isequal/4.5.6",
+    "wanted": {
+      "dependentId": ".",
+      "name": "@types/lodash.isequal",
+      "rawSpec": "^4.5.5"
+    }
+  },
+  "37 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/@types/lodash.throttle/4.1.7",
+    "wanted": {
+      "dependentId": ".",
+      "name": "@types/lodash.throttle",
+      "rawSpec": "^4.1.6"
+    }
+  },
+  "38 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/@types/react-router/5.1.19",
+    "wanted": {
+      "dependentId": ".",
+      "name": "@types/react-router",
+      "rawSpec": "^5.1.19"
+    }
+  },
+  "39 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/@umijs/fabric/2.14.0",
+    "wanted": {
+      "dependentId": ".",
+      "name": "@umijs/fabric",
+      "rawSpec": "^2.1.0"
+    }
+  },
+  "40 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/@umijs/plugin-sass/1.1.1",
+    "wanted": {
+      "dependentId": ".",
+      "name": "@umijs/plugin-sass",
+      "rawSpec": "^1.1.1"
+    }
+  },
+  "41 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/antd/4.23.5",
+    "wanted": {
+      "dependentId": ".",
+      "name": "antd",
+      "rawSpec": "^4.3.3"
+    }
+  },
+  "42 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/babel-loader/8.2.5",
+    "wanted": {
+      "dependentId": ".",
+      "name": "babel-loader",
+      "rawSpec": "^8.1.0"
+    }
+  },
+  "43 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/babel-plugin-import/1.13.5",
+    "wanted": {
+      "dependentId": ".",
+      "name": "babel-plugin-import",
+      "rawSpec": "^1.12.0"
+    }
+  },
+  "44 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/babel-plugin-transform-async-to-promises/0.8.18",
+    "wanted": {
+      "dependentId": ".",
+      "name": "babel-plugin-transform-async-to-promises",
+      "rawSpec": "^0.8.15"
+    }
+  },
+  "45 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/coveralls/3.1.1",
+    "wanted": {
+      "dependentId": ".",
+      "name": "coveralls",
+      "rawSpec": "^3.1.1"
+    }
+  },
+  "46 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/del/5.1.0",
+    "wanted": {
+      "dependentId": ".",
+      "name": "del",
+      "rawSpec": "^5.1.0"
+    }
+  },
+  "47 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/dumi/1.1.48",
+    "wanted": {
+      "dependentId": ".",
+      "name": "dumi",
+      "rawSpec": "^1.1.48"
+    }
+  },
+  "48 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/enzyme/3.11.0",
+    "wanted": {
+      "dependentId": ".",
+      "name": "enzyme",
+      "rawSpec": "^3.10.0"
+    }
+  },
+  "49 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/eslint/7.32.0",
+    "wanted": {
+      "dependentId": ".",
+      "name": "eslint",
+      "rawSpec": "^7.2.0"
+    }
+  },
+  "50 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/eslint-plugin-react-hooks/4.6.0",
+    "wanted": {
+      "dependentId": ".",
+      "name": "eslint-plugin-react-hooks",
+      "rawSpec": "^4.0.8"
+    }
+  },
+  "51 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/fast-glob/3.2.12",
+    "wanted": {
+      "dependentId": ".",
+      "name": "fast-glob",
+      "rawSpec": "^3.2.11"
+    }
+  },
+  "52 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/fs-extra/10.1.0",
+    "wanted": {
+      "dependentId": ".",
+      "name": "fs-extra",
+      "rawSpec": "^10.0.1"
+    }
+  },
+  "53 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/gray-matter/4.0.3",
+    "wanted": {
+      "dependentId": ".",
+      "name": "gray-matter",
+      "rawSpec": "^4.0.3"
+    }
+  },
+  "54 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/gulp/4.0.2",
+    "wanted": {
+      "dependentId": ".",
+      "name": "gulp",
+      "rawSpec": "^4.0.2"
+    }
+  },
+  "55 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/gulp-babel/8.0.0",
+    "wanted": {
+      "dependentId": ".",
+      "name": "gulp-babel",
+      "rawSpec": "^8.0.0"
+    }
+  },
+  "56 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/gulp-typescript/6.0.0-alpha.1",
+    "wanted": {
+      "dependentId": ".",
+      "name": "gulp-typescript",
+      "rawSpec": "^6.0.0-alpha.1"
+    }
+  },
+  "57 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/husky/8.0.1",
+    "wanted": {
+      "dependentId": ".",
+      "name": "husky",
+      "rawSpec": "^8.0.0"
+    }
+  },
+  "58 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/jest/27.5.1",
+    "wanted": {
+      "dependentId": ".",
+      "name": "jest",
+      "rawSpec": "^27.5.1"
+    }
+  },
+  "59 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/jest-fetch-mock/3.0.3",
+    "wanted": {
+      "dependentId": ".",
+      "name": "jest-fetch-mock",
+      "rawSpec": "^3.0.3"
+    }
+  },
+  "60 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/jest-localstorage-mock/2.4.22",
+    "wanted": {
+      "dependentId": ".",
+      "name": "jest-localstorage-mock",
+      "rawSpec": "^2.4.18"
+    }
+  },
+  "61 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/mockjs/1.1.0",
+    "wanted": {
+      "dependentId": ".",
+      "name": "mockjs",
+      "rawSpec": "^1.1.0"
+    }
+  },
+  "62 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/prettier/2.7.1",
+    "wanted": {
+      "dependentId": ".",
+      "name": "prettier",
+      "rawSpec": "^2.0.5"
+    }
+  },
+  "63 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/pretty-quick/3.1.3",
+    "wanted": {
+      "dependentId": ".",
+      "name": "pretty-quick",
+      "rawSpec": "^3.1.3"
+    }
+  },
+  "64 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/react/18.2.0",
+    "wanted": {
+      "dependentId": ".",
+      "name": "react",
+      "rawSpec": "^18.2.0"
+    }
+  },
+  "65 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/react-dom/18.2.0",
+    "wanted": {
+      "dependentId": ".",
+      "name": "react-dom",
+      "rawSpec": "^18.2.0"
+    }
+  },
+  "66 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/react-drag-listview/0.1.9",
+    "wanted": {
+      "dependentId": ".",
+      "name": "react-drag-listview",
+      "rawSpec": "^0.1.6"
+    }
+  },
+  "67 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/react-router/6.4.2",
+    "wanted": {
+      "dependentId": ".",
+      "name": "react-router",
+      "rawSpec": "^6.4.2"
+    }
+  },
+  "68 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/react-shadow/19.0.3",
+    "wanted": {
+      "dependentId": ".",
+      "name": "react-shadow",
+      "rawSpec": "^19.0.3"
+    }
+  },
+  "69 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/react-test-renderer/16.14.0",
+    "wanted": {
+      "dependentId": ".",
+      "name": "react-test-renderer",
+      "rawSpec": "^16.13.1"
+    }
+  },
+  "70 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/rimraf/3.0.2",
+    "wanted": {
+      "dependentId": ".",
+      "name": "rimraf",
+      "rawSpec": "^3.0.2"
+    }
+  },
+  "71 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/surge/0.21.7",
+    "wanted": {
+      "dependentId": ".",
+      "name": "surge",
+      "rawSpec": "^0.21.3"
+    }
+  },
+  "72 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/ts-jest/27.1.5",
+    "wanted": {
+      "dependentId": ".",
+      "name": "ts-jest",
+      "rawSpec": "^27.1.5"
+    }
+  },
+  "73 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/typescript/4.8.4",
+    "wanted": {
+      "dependentId": ".",
+      "name": "typescript",
+      "rawSpec": "^4.8.4"
+    }
+  },
+  "74 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/umi-request/1.4.0",
+    "wanted": {
+      "dependentId": ".",
+      "name": "umi-request",
+      "rawSpec": "^1.2.18"
+    }
+  },
+  "75 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/webpack/4.46.0",
+    "wanted": {
+      "dependentId": ".",
+      "name": "webpack",
+      "rawSpec": "^4.43.0"
+    }
+  },
+  "76 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/webpack-cli/3.3.12",
+    "wanted": {
+      "dependentId": ".",
+      "name": "webpack-cli",
+      "rawSpec": "^3.3.10"
+    }
+  },
+  "77 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/webpack-merge/4.2.2",
+    "wanted": {
+      "dependentId": ".",
+      "name": "webpack-merge",
+      "rawSpec": "^4.2.2"
+    }
+  },
+  "78 debug pnpm:request-retry": {
+    "attempt": 1,
+    "error": {
+      "code": "ERR_PNPM_FETCH_404",
+      "hint": "No authorization header was set for the request.",
+      "attempts": 1,
+      "request": {
+        "url": "http://npm.devops.xiaohongshu.com:7001/@alifd/next/-/next-1.26.3.tgz"
+      },
+      "response": {
+        "size": 0
+      },
+      "resource": "http://npm.devops.xiaohongshu.com:7001/@alifd/next/-/next-1.26.3.tgz"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 10000,
+    "url": "http://npm.devops.xiaohongshu.com:7001/@alifd/next/-/next-1.26.3.tgz"
+  },
+  "79 debug pnpm:request-retry": {
+    "attempt": 1,
+    "error": {
+      "code": "ERR_PNPM_FETCH_404",
+      "hint": "No authorization header was set for the request.",
+      "attempts": 1,
+      "request": {
+        "url": "http://npm.devops.xiaohongshu.com:7001/@types/enzyme/-/enzyme-3.10.12.tgz"
+      },
+      "response": {
+        "size": 0
+      },
+      "resource": "http://npm.devops.xiaohongshu.com:7001/@types/enzyme/-/enzyme-3.10.12.tgz"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 10000,
+    "url": "http://npm.devops.xiaohongshu.com:7001/@types/enzyme/-/enzyme-3.10.12.tgz"
+  },
+  "80 debug pnpm:request-retry": {
+    "attempt": 1,
+    "error": {
+      "code": "ERR_PNPM_FETCH_404",
+      "hint": "No authorization header was set for the request.",
+      "attempts": 1,
+      "request": {
+        "url": "http://npm.devops.xiaohongshu.com:7001/@ant-design/icons/-/icons-4.7.0.tgz"
+      },
+      "response": {
+        "size": 0
+      },
+      "resource": "http://npm.devops.xiaohongshu.com:7001/@ant-design/icons/-/icons-4.7.0.tgz"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 10000,
+    "url": "http://npm.devops.xiaohongshu.com:7001/@ant-design/icons/-/icons-4.7.0.tgz"
+  },
+  "81 debug pnpm:request-retry": {
+    "attempt": 1,
+    "error": {
+      "code": "ERR_PNPM_FETCH_404",
+      "hint": "No authorization header was set for the request.",
+      "attempts": 1,
+      "request": {
+        "url": "http://npm.devops.xiaohongshu.com:7001/@types/js-cookie/-/js-cookie-2.2.6.tgz"
+      },
+      "response": {
+        "size": 0
+      },
+      "resource": "http://npm.devops.xiaohongshu.com:7001/@types/js-cookie/-/js-cookie-2.2.6.tgz"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 10000,
+    "url": "http://npm.devops.xiaohongshu.com:7001/@types/js-cookie/-/js-cookie-2.2.6.tgz"
+  },
+  "82 debug pnpm:request-retry": {
+    "attempt": 1,
+    "error": {
+      "code": "ERR_PNPM_FETCH_404",
+      "hint": "No authorization header was set for the request.",
+      "attempts": 1,
+      "request": {
+        "url": "http://npm.devops.xiaohongshu.com:7001/jest-websocket-mock/-/jest-websocket-mock-2.4.0.tgz"
+      },
+      "response": {
+        "size": 0
+      },
+      "resource": "http://npm.devops.xiaohongshu.com:7001/jest-websocket-mock/-/jest-websocket-mock-2.4.0.tgz"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 10000,
+    "url": "http://npm.devops.xiaohongshu.com:7001/jest-websocket-mock/-/jest-websocket-mock-2.4.0.tgz"
+  },
+  "83 debug pnpm:request-retry": {
+    "attempt": 1,
+    "error": {
+      "code": "ERR_PNPM_FETCH_404",
+      "hint": "No authorization header was set for the request.",
+      "attempts": 1,
+      "request": {
+        "url": "http://npm.devops.xiaohongshu.com:7001/antd/-/antd-4.23.5.tgz"
+      },
+      "response": {
+        "size": 0
+      },
+      "resource": "http://npm.devops.xiaohongshu.com:7001/antd/-/antd-4.23.5.tgz"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 10000,
+    "url": "http://npm.devops.xiaohongshu.com:7001/antd/-/antd-4.23.5.tgz"
+  },
+  "84 debug pnpm:fetching-progress": {
+    "attempt": 1,
+    "packageId": "npm.devops.xiaohongshu.com+7001/ahooks-v3-count/1.0.0",
+    "size": 958,
+    "status": "started"
+  },
+  "85 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/ahooks-v3-count/1.0.0",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "resolved"
+  },
+  "86 debug pnpm:fetching-progress": {
+    "attempt": 1,
+    "packageId": "npm.devops.xiaohongshu.com+7001/mock-socket/9.1.5",
+    "size": 77696,
+    "status": "started"
+  },
+  "87 debug pnpm:fetching-progress": {
+    "attempt": 1,
+    "packageId": "npm.devops.xiaohongshu.com+7001/js-cookie/2.2.1",
+    "size": 10010,
+    "status": "started"
+  },
+  "88 debug pnpm:fetching-progress": {
+    "attempt": 1,
+    "packageId": "npm.devops.xiaohongshu.com+7001/dayjs/1.11.5",
+    "size": 137822,
+    "status": "started"
+  },
+  "89 debug pnpm:fetching-progress": {
+    "attempt": 1,
+    "packageId": "npm.devops.xiaohongshu.com+7001/react-drag-listview/0.1.9",
+    "size": 78386,
+    "status": "started"
+  },
+  "90 debug pnpm:fetching-progress": {
+    "attempt": 1,
+    "packageId": "npm.devops.xiaohongshu.com+7001/enzyme-adapter-react-16/1.15.6",
+    "size": 82127,
+    "status": "started"
+  },
+  "91 debug pnpm:fetching-progress": {
+    "attempt": 1,
+    "packageId": "npm.devops.xiaohongshu.com+7001/intersection-observer/0.12.2",
+    "size": 22074,
+    "status": "started"
+  },
+  "92 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/js-cookie/2.2.1",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "resolved"
+  },
+  "93 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/react-drag-listview/0.1.9",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "resolved"
+  },
+  "94 debug pnpm:fetching-progress": {
+    "attempt": 1,
+    "packageId": "npm.devops.xiaohongshu.com+7001/resize-observer-polyfill/1.5.1",
+    "size": 32739,
+    "status": "started"
+  },
+  "95 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/resize-observer-polyfill/1.5.1",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "resolved"
+  },
+  "96 debug pnpm:fetching-progress": {
+    "attempt": 1,
+    "packageId": "npm.devops.xiaohongshu.com+7001/query-string/6.14.1",
+    "size": 8265,
+    "status": "started"
+  },
+  "97 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/query-string/6.14.1",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "resolved"
+  },
+  "98 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/ahooks-v3-count/1.0.0",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "fetched"
+  },
+  "99 debug pnpm:request-retry": {
+    "attempt": 1,
+    "error": {
+      "code": "ERR_PNPM_FETCH_404",
+      "hint": "No authorization header was set for the request.",
+      "attempts": 1,
+      "request": {
+        "url": "http://npm.devops.xiaohongshu.com:7001/@babel/core/-/core-7.19.3.tgz"
+      },
+      "response": {
+        "size": 0
+      },
+      "resource": "http://npm.devops.xiaohongshu.com:7001/@babel/core/-/core-7.19.3.tgz"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 10000,
+    "url": "http://npm.devops.xiaohongshu.com:7001/@babel/core/-/core-7.19.3.tgz"
+  },
+  "100 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/js-cookie/2.2.1",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "fetched"
+  },
+  "101 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/intersection-observer/0.12.2",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "resolved"
+  },
+  "102 debug pnpm:request-retry": {
+    "attempt": 1,
+    "error": {
+      "code": "ERR_PNPM_FETCH_404",
+      "hint": "No authorization header was set for the request.",
+      "attempts": 1,
+      "request": {
+        "url": "http://npm.devops.xiaohongshu.com:7001/@babel/cli/-/cli-7.19.3.tgz"
+      },
+      "response": {
+        "size": 0
+      },
+      "resource": "http://npm.devops.xiaohongshu.com:7001/@babel/cli/-/cli-7.19.3.tgz"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 10000,
+    "url": "http://npm.devops.xiaohongshu.com:7001/@babel/cli/-/cli-7.19.3.tgz"
+  },
+  "103 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/query-string/6.14.1",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "fetched"
+  },
+  "104 debug pnpm:_dependency_resolved": {
+    "resolution": "link:../hooks",
+    "wanted": {
+      "dependentId": "packages/use-url-state",
+      "name": "ahooks",
+      "rawSpec": "^3.4.1"
+    }
+  },
+  "105 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/decode-uri-component/0.2.0",
+    "wanted": {
+      "dependentId": "/query-string/6.14.1",
+      "name": "decode-uri-component",
+      "rawSpec": "^0.2.0"
+    }
+  },
+  "106 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/filter-obj/1.1.0",
+    "wanted": {
+      "dependentId": "/query-string/6.14.1",
+      "name": "filter-obj",
+      "rawSpec": "^1.1.0"
+    }
+  },
+  "107 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/split-on-first/1.1.0",
+    "wanted": {
+      "dependentId": "/query-string/6.14.1",
+      "name": "split-on-first",
+      "rawSpec": "^1.0.0"
+    }
+  },
+  "108 debug pnpm:_dependency_resolved": {
+    "resolution": "npm.devops.xiaohongshu.com+7001/strict-uri-encode/2.0.0",
+    "wanted": {
+      "dependentId": "/query-string/6.14.1",
+      "name": "strict-uri-encode",
+      "rawSpec": "^2.0.0"
+    }
+  },
+  "109 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/enzyme-adapter-react-16/1.15.6",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "resolved"
+  },
+  "110 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/mock-socket/9.1.5",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "resolved"
+  },
+  "111 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/intersection-observer/0.12.2",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "fetched"
+  },
+  "112 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/resize-observer-polyfill/1.5.1",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "fetched"
+  },
+  "113 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/enzyme-adapter-react-16/1.15.6",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "fetched"
+  },
+  "114 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/mock-socket/9.1.5",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "fetched"
+  },
+  "115 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/react-drag-listview/0.1.9",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "fetched"
+  },
+  "116 debug pnpm:fetching-progress": {
+    "attempt": 1,
+    "packageId": "npm.devops.xiaohongshu.com+7001/mockjs/1.1.0",
+    "size": 717976,
+    "status": "started"
+  },
+  "117 debug pnpm:request-retry": {
+    "attempt": 1,
+    "error": {
+      "code": "ERR_PNPM_FETCH_404",
+      "hint": "No authorization header was set for the request.",
+      "attempts": 1,
+      "request": {
+        "url": "http://npm.devops.xiaohongshu.com:7001/@testing-library/jest-dom/-/jest-dom-5.16.5.tgz"
+      },
+      "response": {
+        "size": 0
+      },
+      "resource": "http://npm.devops.xiaohongshu.com:7001/@testing-library/jest-dom/-/jest-dom-5.16.5.tgz"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 10000,
+    "url": "http://npm.devops.xiaohongshu.com:7001/@testing-library/jest-dom/-/jest-dom-5.16.5.tgz"
+  },
+  "118 debug pnpm:request-retry": {
+    "attempt": 1,
+    "error": {
+      "code": "ERR_PNPM_FETCH_404",
+      "hint": "No authorization header was set for the request.",
+      "attempts": 1,
+      "request": {
+        "url": "http://npm.devops.xiaohongshu.com:7001/@types/lodash.debounce/-/lodash.debounce-4.0.7.tgz"
+      },
+      "response": {
+        "size": 0
+      },
+      "resource": "http://npm.devops.xiaohongshu.com:7001/@types/lodash.debounce/-/lodash.debounce-4.0.7.tgz"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 10000,
+    "url": "http://npm.devops.xiaohongshu.com:7001/@types/lodash.debounce/-/lodash.debounce-4.0.7.tgz"
+  },
+  "119 debug pnpm:request-retry": {
+    "attempt": 1,
+    "error": {
+      "code": "ERR_PNPM_FETCH_404",
+      "hint": "No authorization header was set for the request.",
+      "attempts": 1,
+      "request": {
+        "url": "http://npm.devops.xiaohongshu.com:7001/@babel/plugin-transform-runtime/-/plugin-transform-runtime-7.19.6.tgz"
+      },
+      "response": {
+        "size": 0
+      },
+      "resource": "http://npm.devops.xiaohongshu.com:7001/@babel/plugin-transform-runtime/-/plugin-transform-runtime-7.19.6.tgz"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 10000,
+    "url": "http://npm.devops.xiaohongshu.com:7001/@babel/plugin-transform-runtime/-/plugin-transform-runtime-7.19.6.tgz"
+  },
+  "120 debug pnpm:request-retry": {
+    "attempt": 1,
+    "error": {
+      "code": "ERR_PNPM_FETCH_404",
+      "hint": "No authorization header was set for the request.",
+      "attempts": 1,
+      "request": {
+        "url": "http://npm.devops.xiaohongshu.com:7001/@types/jest/-/jest-27.5.2.tgz"
+      },
+      "response": {
+        "size": 0
+      },
+      "resource": "http://npm.devops.xiaohongshu.com:7001/@types/jest/-/jest-27.5.2.tgz"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 10000,
+    "url": "http://npm.devops.xiaohongshu.com:7001/@types/jest/-/jest-27.5.2.tgz"
+  },
+  "121 debug pnpm:request-retry": {
+    "attempt": 1,
+    "error": {
+      "code": "ERR_PNPM_FETCH_404",
+      "hint": "No authorization header was set for the request.",
+      "attempts": 1,
+      "request": {
+        "url": "http://npm.devops.xiaohongshu.com:7001/@testing-library/react/-/react-13.4.0.tgz"
+      },
+      "response": {
+        "size": 0
+      },
+      "resource": "http://npm.devops.xiaohongshu.com:7001/@testing-library/react/-/react-13.4.0.tgz"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 10000,
+    "url": "http://npm.devops.xiaohongshu.com:7001/@testing-library/react/-/react-13.4.0.tgz"
+  },
+  "122 debug pnpm:request-retry": {
+    "attempt": 1,
+    "error": {
+      "code": "ERR_PNPM_FETCH_404",
+      "hint": "No authorization header was set for the request.",
+      "attempts": 1,
+      "request": {
+        "url": "http://npm.devops.xiaohongshu.com:7001/@testing-library/react-hooks/-/react-hooks-8.0.1.tgz"
+      },
+      "response": {
+        "size": 0
+      },
+      "resource": "http://npm.devops.xiaohongshu.com:7001/@testing-library/react-hooks/-/react-hooks-8.0.1.tgz"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 10000,
+    "url": "http://npm.devops.xiaohongshu.com:7001/@testing-library/react-hooks/-/react-hooks-8.0.1.tgz"
+  },
+  "123 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/mockjs/1.1.0",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "resolved"
+  },
+  "124 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/lodash/4.17.21",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "found_in_store"
+  },
+  "125 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/lodash/4.17.21",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "resolved"
+  },
+  "126 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/@commitlint/cli/17.1.2",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "found_in_store"
+  },
+  "127 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/@commitlint/cli/17.1.2",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "resolved"
+  },
+  "128 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/@commitlint/config-conventional/17.1.0",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "found_in_store"
+  },
+  "129 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/@commitlint/config-conventional/17.1.0",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "resolved"
+  },
+  "130 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/fs-extra/10.1.0",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "found_in_store"
+  },
+  "131 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/fs-extra/10.1.0",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "resolved"
+  },
+  "132 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/fast-glob/3.2.12",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "found_in_store"
+  },
+  "133 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/fast-glob/3.2.12",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "resolved"
+  },
+  "134 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/dayjs/1.11.5",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "resolved"
+  },
+  "135 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/husky/8.0.1",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "found_in_store"
+  },
+  "136 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/husky/8.0.1",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "resolved"
+  },
+  "137 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/eslint-plugin-react-hooks/4.6.0",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "found_in_store"
+  },
+  "138 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/eslint-plugin-react-hooks/4.6.0",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "resolved"
+  },
+  "139 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/prettier/2.7.1",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "found_in_store"
+  },
+  "140 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/prettier/2.7.1",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "resolved"
+  },
+  "141 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/react/18.2.0",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "found_in_store"
+  },
+  "142 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/react/18.2.0",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "resolved"
+  },
+  "143 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/react-dom/18.2.0",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "found_in_store"
+  },
+  "144 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/react-dom/18.2.0",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "resolved"
+  },
+  "145 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/rimraf/3.0.2",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "found_in_store"
+  },
+  "146 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/rimraf/3.0.2",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "resolved"
+  },
+  "147 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/dayjs/1.11.5",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "fetched"
+  },
+  "148 debug pnpm:update-check": {
+    "currentVersion": "6.32.24",
+    "latestVersion": "7.3.0"
+  },
+  "149 debug pnpm:progress": {
+    "packageId": "npm.devops.xiaohongshu.com+7001/mockjs/1.1.0",
+    "requester": "/Users/maojun/xhs-utils/learn-ahooks",
+    "status": "fetched"
+  },
+  "150 debug pnpm:request-retry": {
+    "attempt": 1,
+    "error": {
+      "code": "ERR_PNPM_FETCH_404",
+      "hint": "No authorization header was set for the request.",
+      "attempts": 1,
+      "request": {
+        "url": "http://npm.devops.xiaohongshu.com:7001/@types/lodash.throttle/-/lodash.throttle-4.1.7.tgz"
+      },
+      "response": {
+        "size": 0
+      },
+      "resource": "http://npm.devops.xiaohongshu.com:7001/@types/lodash.throttle/-/lodash.throttle-4.1.7.tgz"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 10000,
+    "url": "http://npm.devops.xiaohongshu.com:7001/@types/lodash.throttle/-/lodash.throttle-4.1.7.tgz"
+  },
+  "151 debug pnpm:request-retry": {
+    "attempt": 1,
+    "error": {
+      "code": "ERR_PNPM_FETCH_404",
+      "hint": "No authorization header was set for the request.",
+      "attempts": 1,
+      "request": {
+        "url": "http://npm.devops.xiaohongshu.com:7001/@types/lodash.isequal/-/lodash.isequal-4.5.6.tgz"
+      },
+      "response": {
+        "size": 0
+      },
+      "resource": "http://npm.devops.xiaohongshu.com:7001/@types/lodash.isequal/-/lodash.isequal-4.5.6.tgz"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 10000,
+    "url": "http://npm.devops.xiaohongshu.com:7001/@types/lodash.isequal/-/lodash.isequal-4.5.6.tgz"
+  },
+  "152 debug pnpm:request-retry": {
+    "attempt": 2,
+    "error": {
+      "code": "ERR_PNPM_FETCH_404",
+      "hint": "No authorization header was set for the request.",
+      "attempts": 2,
+      "request": {
+        "url": "http://npm.devops.xiaohongshu.com:7001/@types/enzyme/-/enzyme-3.10.12.tgz"
+      },
+      "response": {
+        "size": 0
+      },
+      "resource": "http://npm.devops.xiaohongshu.com:7001/@types/enzyme/-/enzyme-3.10.12.tgz"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 60000,
+    "url": "http://npm.devops.xiaohongshu.com:7001/@types/enzyme/-/enzyme-3.10.12.tgz"
+  },
+  "153 debug pnpm:request-retry": {
+    "attempt": 2,
+    "error": {
+      "code": "ERR_PNPM_FETCH_404",
+      "hint": "No authorization header was set for the request.",
+      "attempts": 2,
+      "request": {
+        "url": "http://npm.devops.xiaohongshu.com:7001/@alifd/next/-/next-1.26.3.tgz"
+      },
+      "response": {
+        "size": 0
+      },
+      "resource": "http://npm.devops.xiaohongshu.com:7001/@alifd/next/-/next-1.26.3.tgz"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 60000,
+    "url": "http://npm.devops.xiaohongshu.com:7001/@alifd/next/-/next-1.26.3.tgz"
+  },
+  "154 debug pnpm:request-retry": {
+    "attempt": 2,
+    "error": {
+      "code": "ERR_PNPM_FETCH_404",
+      "hint": "No authorization header was set for the request.",
+      "attempts": 2,
+      "request": {
+        "url": "http://npm.devops.xiaohongshu.com:7001/@ant-design/icons/-/icons-4.7.0.tgz"
+      },
+      "response": {
+        "size": 0
+      },
+      "resource": "http://npm.devops.xiaohongshu.com:7001/@ant-design/icons/-/icons-4.7.0.tgz"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 60000,
+    "url": "http://npm.devops.xiaohongshu.com:7001/@ant-design/icons/-/icons-4.7.0.tgz"
+  },
+  "155 debug pnpm:request-retry": {
+    "attempt": 2,
+    "error": {
+      "code": "ERR_PNPM_FETCH_404",
+      "hint": "No authorization header was set for the request.",
+      "attempts": 2,
+      "request": {
+        "url": "http://npm.devops.xiaohongshu.com:7001/@types/js-cookie/-/js-cookie-2.2.6.tgz"
+      },
+      "response": {
+        "size": 0
+      },
+      "resource": "http://npm.devops.xiaohongshu.com:7001/@types/js-cookie/-/js-cookie-2.2.6.tgz"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 60000,
+    "url": "http://npm.devops.xiaohongshu.com:7001/@types/js-cookie/-/js-cookie-2.2.6.tgz"
+  },
+  "156 debug pnpm:request-retry": {
+    "attempt": 2,
+    "error": {
+      "code": "ERR_PNPM_FETCH_404",
+      "hint": "No authorization header was set for the request.",
+      "attempts": 2,
+      "request": {
+        "url": "http://npm.devops.xiaohongshu.com:7001/antd/-/antd-4.23.5.tgz"
+      },
+      "response": {
+        "size": 0
+      },
+      "resource": "http://npm.devops.xiaohongshu.com:7001/antd/-/antd-4.23.5.tgz"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 60000,
+    "url": "http://npm.devops.xiaohongshu.com:7001/antd/-/antd-4.23.5.tgz"
+  },
+  "157 debug pnpm:request-retry": {
+    "attempt": 2,
+    "error": {
+      "code": "ERR_PNPM_FETCH_404",
+      "hint": "No authorization header was set for the request.",
+      "attempts": 2,
+      "request": {
+        "url": "http://npm.devops.xiaohongshu.com:7001/jest-websocket-mock/-/jest-websocket-mock-2.4.0.tgz"
+      },
+      "response": {
+        "size": 0
+      },
+      "resource": "http://npm.devops.xiaohongshu.com:7001/jest-websocket-mock/-/jest-websocket-mock-2.4.0.tgz"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 60000,
+    "url": "http://npm.devops.xiaohongshu.com:7001/jest-websocket-mock/-/jest-websocket-mock-2.4.0.tgz"
+  },
+  "158 debug pnpm:request-retry": {
+    "attempt": 2,
+    "error": {
+      "code": "ERR_PNPM_FETCH_404",
+      "hint": "No authorization header was set for the request.",
+      "attempts": 2,
+      "request": {
+        "url": "http://npm.devops.xiaohongshu.com:7001/@babel/core/-/core-7.19.3.tgz"
+      },
+      "response": {
+        "size": 0
+      },
+      "resource": "http://npm.devops.xiaohongshu.com:7001/@babel/core/-/core-7.19.3.tgz"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 60000,
+    "url": "http://npm.devops.xiaohongshu.com:7001/@babel/core/-/core-7.19.3.tgz"
+  },
+  "159 debug pnpm:request-retry": {
+    "attempt": 2,
+    "error": {
+      "code": "ERR_PNPM_FETCH_404",
+      "hint": "No authorization header was set for the request.",
+      "attempts": 2,
+      "request": {
+        "url": "http://npm.devops.xiaohongshu.com:7001/@babel/cli/-/cli-7.19.3.tgz"
+      },
+      "response": {
+        "size": 0
+      },
+      "resource": "http://npm.devops.xiaohongshu.com:7001/@babel/cli/-/cli-7.19.3.tgz"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 60000,
+    "url": "http://npm.devops.xiaohongshu.com:7001/@babel/cli/-/cli-7.19.3.tgz"
+  },
+  "160 debug pnpm:request-retry": {
+    "attempt": 2,
+    "error": {
+      "code": "ERR_PNPM_FETCH_404",
+      "hint": "No authorization header was set for the request.",
+      "attempts": 2,
+      "request": {
+        "url": "http://npm.devops.xiaohongshu.com:7001/@testing-library/jest-dom/-/jest-dom-5.16.5.tgz"
+      },
+      "response": {
+        "size": 0
+      },
+      "resource": "http://npm.devops.xiaohongshu.com:7001/@testing-library/jest-dom/-/jest-dom-5.16.5.tgz"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 60000,
+    "url": "http://npm.devops.xiaohongshu.com:7001/@testing-library/jest-dom/-/jest-dom-5.16.5.tgz"
+  },
+  "161 debug pnpm:request-retry": {
+    "attempt": 2,
+    "error": {
+      "code": "ERR_PNPM_FETCH_404",
+      "hint": "No authorization header was set for the request.",
+      "attempts": 2,
+      "request": {
+        "url": "http://npm.devops.xiaohongshu.com:7001/@types/lodash.debounce/-/lodash.debounce-4.0.7.tgz"
+      },
+      "response": {
+        "size": 0
+      },
+      "resource": "http://npm.devops.xiaohongshu.com:7001/@types/lodash.debounce/-/lodash.debounce-4.0.7.tgz"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 60000,
+    "url": "http://npm.devops.xiaohongshu.com:7001/@types/lodash.debounce/-/lodash.debounce-4.0.7.tgz"
+  },
+  "162 debug pnpm:request-retry": {
+    "attempt": 2,
+    "error": {
+      "code": "ERR_PNPM_FETCH_404",
+      "hint": "No authorization header was set for the request.",
+      "attempts": 2,
+      "request": {
+        "url": "http://npm.devops.xiaohongshu.com:7001/@types/jest/-/jest-27.5.2.tgz"
+      },
+      "response": {
+        "size": 0
+      },
+      "resource": "http://npm.devops.xiaohongshu.com:7001/@types/jest/-/jest-27.5.2.tgz"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 60000,
+    "url": "http://npm.devops.xiaohongshu.com:7001/@types/jest/-/jest-27.5.2.tgz"
+  },
+  "163 debug pnpm:request-retry": {
+    "attempt": 2,
+    "error": {
+      "code": "ERR_PNPM_FETCH_404",
+      "hint": "No authorization header was set for the request.",
+      "attempts": 2,
+      "request": {
+        "url": "http://npm.devops.xiaohongshu.com:7001/@babel/plugin-transform-runtime/-/plugin-transform-runtime-7.19.6.tgz"
+      },
+      "response": {
+        "size": 0
+      },
+      "resource": "http://npm.devops.xiaohongshu.com:7001/@babel/plugin-transform-runtime/-/plugin-transform-runtime-7.19.6.tgz"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 60000,
+    "url": "http://npm.devops.xiaohongshu.com:7001/@babel/plugin-transform-runtime/-/plugin-transform-runtime-7.19.6.tgz"
+  },
+  "164 debug pnpm:request-retry": {
+    "attempt": 2,
+    "error": {
+      "code": "ERR_PNPM_FETCH_404",
+      "hint": "No authorization header was set for the request.",
+      "attempts": 2,
+      "request": {
+        "url": "http://npm.devops.xiaohongshu.com:7001/@testing-library/react/-/react-13.4.0.tgz"
+      },
+      "response": {
+        "size": 0
+      },
+      "resource": "http://npm.devops.xiaohongshu.com:7001/@testing-library/react/-/react-13.4.0.tgz"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 60000,
+    "url": "http://npm.devops.xiaohongshu.com:7001/@testing-library/react/-/react-13.4.0.tgz"
+  },
+  "165 debug pnpm:request-retry": {
+    "attempt": 2,
+    "error": {
+      "code": "ERR_PNPM_FETCH_404",
+      "hint": "No authorization header was set for the request.",
+      "attempts": 2,
+      "request": {
+        "url": "http://npm.devops.xiaohongshu.com:7001/@testing-library/react-hooks/-/react-hooks-8.0.1.tgz"
+      },
+      "response": {
+        "size": 0
+      },
+      "resource": "http://npm.devops.xiaohongshu.com:7001/@testing-library/react-hooks/-/react-hooks-8.0.1.tgz"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 60000,
+    "url": "http://npm.devops.xiaohongshu.com:7001/@testing-library/react-hooks/-/react-hooks-8.0.1.tgz"
+  },
+  "166 debug pnpm:request-retry": {
+    "attempt": 2,
+    "error": {
+      "code": "ERR_PNPM_FETCH_404",
+      "hint": "No authorization header was set for the request.",
+      "attempts": 2,
+      "request": {
+        "url": "http://npm.devops.xiaohongshu.com:7001/@types/lodash.throttle/-/lodash.throttle-4.1.7.tgz"
+      },
+      "response": {
+        "size": 0
+      },
+      "resource": "http://npm.devops.xiaohongshu.com:7001/@types/lodash.throttle/-/lodash.throttle-4.1.7.tgz"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 60000,
+    "url": "http://npm.devops.xiaohongshu.com:7001/@types/lodash.throttle/-/lodash.throttle-4.1.7.tgz"
+  },
+  "167 debug pnpm:request-retry": {
+    "attempt": 2,
+    "error": {
+      "code": "ERR_PNPM_FETCH_404",
+      "hint": "No authorization header was set for the request.",
+      "attempts": 2,
+      "request": {
+        "url": "http://npm.devops.xiaohongshu.com:7001/@types/lodash.isequal/-/lodash.isequal-4.5.6.tgz"
+      },
+      "response": {
+        "size": 0
+      },
+      "resource": "http://npm.devops.xiaohongshu.com:7001/@types/lodash.isequal/-/lodash.isequal-4.5.6.tgz"
+    },
+    "maxRetries": 2,
+    "method": "GET",
+    "timeout": 60000,
+    "url": "http://npm.devops.xiaohongshu.com:7001/@types/lodash.isequal/-/lodash.isequal-4.5.6.tgz"
+  },
+  "168 warn pnpm:package-requester": {
+    "message": "Fetching npm.devops.xiaohongshu.com+7001/@types/enzyme/3.10.12 failed!",
+    "prefix": "/Users/maojun/xhs-utils/learn-ahooks"
+  },
+  "169 error pnpm": {
+    "code": "ERR_PNPM_FETCH_404",
+    "hint": "No authorization header was set for the request.",
+    "attempts": 3,
+    "request": {
+      "url": "http://npm.devops.xiaohongshu.com:7001/@types/enzyme/-/enzyme-3.10.12.tgz"
+    },
+    "response": {
+      "size": 0
+    },
+    "resource": "http://npm.devops.xiaohongshu.com:7001/@types/enzyme/-/enzyme-3.10.12.tgz",
+    "err": {
+      "name": "pnpm",
+      "message": "GET http://npm.devops.xiaohongshu.com:7001/@types/enzyme/-/enzyme-3.10.12.tgz: Not Found - 404",
+      "code": "ERR_PNPM_FETCH_404",
+      "stack": "pnpm: GET http://npm.devops.xiaohongshu.com:7001/@types/enzyme/-/enzyme-3.10.12.tgz: Not Found - 404\n    at fetch (/Users/maojun/.nvm/versions/node/v14.17.1/pnpm-global/5/node_modules/.pnpm/pnpm@6.32.24/node_modules/pnpm/dist/pnpm.cjs:81570:21)\n    at runMicrotasks (<anonymous>)\n    at processTicksAndRejections (internal/process/task_queues.js:95:5)\n    at async RetryOperation._fn (/Users/maojun/.nvm/versions/node/v14.17.1/pnpm-global/5/node_modules/.pnpm/pnpm@6.32.24/node_modules/pnpm/dist/pnpm.cjs:81538:23)"
+    }
+  },
+  "170 warn pnpm:package-requester": {
+    "message": "Fetching npm.devops.xiaohongshu.com+7001/@ant-design/icons/4.7.0 failed!",
+    "prefix": "/Users/maojun/xhs-utils/learn-ahooks"
+  }
+}

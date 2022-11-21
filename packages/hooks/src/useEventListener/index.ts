@@ -35,8 +35,15 @@ function useEventListener<K extends keyof WindowEventMap>(
   options?: Options<Window>,
 ): void;
 function useEventListener(eventName: string, handler: noop, options: Options): void;
+/**
+ *
+ * @param eventName 事件名
+ * @param handler 处理函数
+ * @param options 额外配置
+ */
 
 function useEventListener(eventName: string, handler: noop, options: Options = {}) {
+  // 处理函数 防止闭包问题
   const handlerRef = useLatest(handler);
 
   useEffectWithTarget(

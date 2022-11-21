@@ -8,6 +8,9 @@ export interface Options {
   onChange?: (isHovering: boolean) => void;
 }
 
+/**
+ * 其实就是监听鼠标的移入和移出事件
+ */
 export default (target: BasicTarget, options?: Options): boolean => {
   const { onEnter, onLeave, onChange } = options || {};
 

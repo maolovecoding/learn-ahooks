@@ -7,10 +7,14 @@ export interface Actions {
   set: (value: boolean) => void;
   toggle: () => void;
 }
-
+/**
+ * 优雅的切换布尔值
+ * @param defaultValue
+ * @returns
+ */
 export default function useBoolean(defaultValue = false): [boolean, Actions] {
   const [state, { toggle, set }] = useToggle(defaultValue);
-
+  // 动作函数进行缓存
   const actions: Actions = useMemo(() => {
     const setTrue = () => set(true);
     const setFalse = () => set(false);
