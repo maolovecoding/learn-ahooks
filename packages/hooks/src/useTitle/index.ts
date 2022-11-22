@@ -10,6 +10,11 @@ const DEFAULT_OPTIONS: Options = {
   restoreOnUnmount: false,
 };
 
+/**
+ * 设置文档title
+ * @param title
+ * @param options
+ */
 function useTitle(title: string, options: Options = DEFAULT_OPTIONS) {
   const titleRef = useRef(isBrowser ? document.title : '');
   useEffect(() => {

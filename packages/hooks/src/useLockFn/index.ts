@@ -1,5 +1,9 @@
 import { useRef, useCallback } from 'react';
-
+/**
+ *
+ * @param fn 其实就是在这个函数执行完之前不允许继续执行
+ * @returns
+ */
 function useLockFn<P extends any[] = any[], V extends any = any>(fn: (...args: P) => Promise<V>) {
   const lockRef = useRef(false);
 
