@@ -19,6 +19,7 @@ export default (target: BasicTarget, options?: Options): boolean => {
   useEventListener(
     'mouseenter',
     () => {
+      // 鼠标移入回调，设置为true
       onEnter?.();
       setTrue();
       onChange?.(true);
@@ -31,6 +32,7 @@ export default (target: BasicTarget, options?: Options): boolean => {
   useEventListener(
     'mouseleave',
     () => {
+      // 鼠标移出事件，设置为false
       onLeave?.();
       setFalse();
       onChange?.(false);
@@ -39,6 +41,6 @@ export default (target: BasicTarget, options?: Options): boolean => {
       target,
     },
   );
-
+  // 返回当前的状态
   return state;
 };
