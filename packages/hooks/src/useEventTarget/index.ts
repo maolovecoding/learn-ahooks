@@ -12,18 +12,23 @@ export interface Options<T, U> {
   initialValue?: T;
   transformer?: (value: U) => T;
 }
-
+/**
+ * 处理表单 reset onChange
+ * @param options
+ * @returns
+ */
 function useEventTarget<T, U = T>(options?: Options<T, U>) {
   const { initialValue, transformer } = options || {};
   const [value, setValue] = useState(initialValue);
-
+  // 记录最新的引用
   const transformerRef = useLatest(transformer);
-
+  // 重置
   const reset = useCallback(() => setValue(initialValue), []);
 
   const onChange = useCallback((e: EventTarget<U>) => {
     const _value = e.target.value;
     if (isFunction(transformerRef.current)) {
+      // 对值进行转换
       return setValue(transformerRef.current(_value));
     }
     // no transformer => U and T should be the same

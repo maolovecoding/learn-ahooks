@@ -7,7 +7,12 @@ import { isObject } from '../utils';
 const proxyMap = new WeakMap();
 // k:v 代理过的对象:原对象
 const rawMap = new WeakMap();
-
+/**
+ * 代理
+ * @param initialVal
+ * @param cb
+ * @returns
+ */
 function observer<T extends Record<string, any>>(initialVal: T, cb: () => void): T {
   const existingProxy = proxyMap.get(initialVal);
 
@@ -29,6 +34,7 @@ function observer<T extends Record<string, any>>(initialVal: T, cb: () => void):
     },
     set(target, key, val) {
       const ret = Reflect.set(target, key, val);
+      // 强制刷新
       cb();
       return ret;
     },
@@ -44,17 +50,23 @@ function observer<T extends Record<string, any>>(initialVal: T, cb: () => void):
 
   return proxy;
 }
-
+/**
+ * 响应式的hook
+ * @param initialState
+ * @returns
+ */
 function useReactive<S extends Record<string, any>>(initialState: S): S {
   const update = useUpdate();
+  // state最新的值
   const stateRef = useRef<S>(initialState);
 
   const state = useCreation(() => {
     return observer(stateRef.current, () => {
+      // 强制刷新组件
       update();
     });
   }, []);
-
+  // 不需要改变 state的引用 组件也是会一直更新的
   return state;
 }
 
