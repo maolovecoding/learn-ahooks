@@ -20,9 +20,9 @@ import useRequestImplement from './useRequestImplement';
 //   plugins?: Plugin<TData, TParams>[],
 // ): Result<TData, TParams>
 function useRequest<TData, TParams extends any[]>(
-  service: Service<TData, TParams>,
-  options?: Options<TData, TParams>,
-  plugins?: Plugin<TData, TParams>[],
+  service: Service<TData, TParams>, // 请求实例
+  options?: Options<TData, TParams>, // 配置
+  plugins?: Plugin<TData, TParams>[], // 自定义插件？
 ) {
   return useRequestImplement<TData, TParams>(service, options, [
     ...(plugins || []),

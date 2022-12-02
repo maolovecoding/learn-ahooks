@@ -107,6 +107,7 @@ export type Plugin<TData, TParams extends any[]> = {
 // export interface OptionsWithFormat<TData, TParams extends any[], TFormated, TTFormated extends TFormated = any> extends Omit<Options<TTFormated, TParams>, 'formatResult'> {
 //   formatResult: (res: TData) => TFormated;
 // };
+// useRequestImplement 返回值类型
 
 export interface Result<TData, TParams extends any[]> {
   loading: boolean;
@@ -121,4 +122,5 @@ export interface Result<TData, TParams extends any[]> {
   mutate: Fetch<TData, TParams>['mutate'];
 }
 
+// 定时器返回值定义
 export type Timeout = ReturnType<typeof setTimeout>;

@@ -91,15 +91,18 @@ const useCachePlugin: Plugin<any, any[]> = (
       }
     },
     onRequest: (service, args) => {
+      // 根据 cacheKey 找是不是有缓存
       let servicePromise = cachePromise.getCachePromise(cacheKey);
 
       // If has servicePromise, and is not trigger by self, then use it
+      // 如果有servicePromise，并且不是自己触发的，那么就使用它
       if (servicePromise && servicePromise !== currentPromiseRef.current) {
         return { servicePromise };
       }
-
+      // 执行本次请求
       servicePromise = service(...args);
       currentPromiseRef.current = servicePromise;
+      // 设置 promise 缓存
       cachePromise.setCachePromise(cacheKey, servicePromise);
       return { servicePromise };
     },

@@ -25,6 +25,7 @@ if (isBrowser) {
       listener();
     }
   };
+  // 监听 visibilitychange 和 focus 事件
   window.addEventListener('visibilitychange', revalidate, false);
   window.addEventListener('focus', revalidate, false);
 }

@@ -14,28 +14,31 @@ function useRequestImplement<TData, TParams extends any[]>(
   plugins: Plugin<TData, TParams>[] = [],
 ) {
   const { manual = false, ...rest } = options;
-
+  // 请求的配置
   const fetchOptions = {
     manual,
     ...rest,
   };
-
+  // 记录最新的请求函数引用
   const serviceRef = useLatest(service);
 
   const update = useUpdate();
-
+  // 请求fetch类实例
   const fetchInstance = useCreation(() => {
+    // 目前只有 useAutoRunPlugin 这个 plugin 有这个方法 onInit
+    // 初始化状态，initState 值为 { loading: xxx }，代表是否 loading
     const initState = plugins.map((p) => p?.onInit?.(fetchOptions)).filter(Boolean);
 
     return new Fetch<TData, TParams>(
-      serviceRef,
-      fetchOptions,
-      update,
+      serviceRef, // 请求
+      fetchOptions, // 请求配置
+      update, // 调用组件会强制更新
       Object.assign({}, ...initState),
     );
   }, []);
   fetchInstance.options = fetchOptions;
   // run all plugins hooks
+  // 插件执行后返回的方法列表
   fetchInstance.pluginImpls = plugins.map((p) => p(fetchInstance, fetchOptions));
 
   useMount(() => {
@@ -43,10 +46,10 @@ function useRequestImplement<TData, TParams extends any[]>(
       // useCachePlugin can set fetchInstance.state.params from cache when init
       const params = fetchInstance.state.params || options.defaultParams || [];
       // @ts-ignore
-      fetchInstance.run(...params);
+      fetchInstance.run(...params); // 发起请求 携带params
     }
   });
-
+  // 组件卸载 取消请求
   useUnmount(() => {
     fetchInstance.cancel();
   });
