@@ -5,8 +5,13 @@ import type { Plugin } from '../types';
 
 const useThrottlePlugin: Plugin<any, any[]> = (
   fetchInstance,
-  { throttleWait, throttleLeading, throttleTrailing },
+  {
+    throttleWait, // 节流等待时间, 单位为毫秒，设置后，进入节流模式
+    throttleLeading, // 在节流开始前执行调用
+    throttleTrailing, // 在节流结束后执行调用
+  },
 ) => {
+  // 节流的函数
   const throttledRef = useRef<DebouncedFunc<any>>();
 
   const options: ThrottleSettings = {};
@@ -19,8 +24,9 @@ const useThrottlePlugin: Plugin<any, any[]> = (
 
   useEffect(() => {
     if (throttleWait) {
+      // 原函数
       const _originRunAsync = fetchInstance.runAsync.bind(fetchInstance);
-
+      // 创建节流函数，该函数提供一个 cancel 方法取消延迟的函数调用以及 flush 方法立即调用。
       throttledRef.current = throttle(
         (callback) => {
           callback();
@@ -42,6 +48,7 @@ const useThrottlePlugin: Plugin<any, any[]> = (
       };
 
       return () => {
+        // 将重写的函数还原
         fetchInstance.runAsync = _originRunAsync;
         throttledRef.current?.cancel();
       };
